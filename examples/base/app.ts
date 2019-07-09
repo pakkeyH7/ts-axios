@@ -70,6 +70,18 @@ axios({
   }
 })
 
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: {
+    a: 1,
+    b: 2
+  },
+  headers: {
+    'content-type': 'application/json'
+  }
+})
+
 const arr = new Int32Array([21, 31])
 
 axios({
@@ -77,3 +89,12 @@ axios({
   url: '/base/buffer',
   data: arr
 })
+
+console.log(axios({
+  method: 'post',
+  url: '/base/post',
+  data: {
+    a: 1,
+    b: 2
+  }
+}), '123')
