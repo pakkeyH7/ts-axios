@@ -71,6 +71,46 @@ router.get('/error/timeout', function(req, res) {
   }, 3000)
 })
 
+router.post('/extend/post', function(req, res) {
+  res.json(req.body)
+})
+
+router.options('/extend/options', function(req, res) {
+  res.json({
+    msg: 'options'
+  })
+})
+
+router.get('/extend/get', function(req, res) {
+  res.json({
+    msg: 'get'
+  })
+})
+
+router.delete('/extend/delete', function(req, res) {
+  res.json({
+    msg: 'delete'
+  })
+})
+
+router.head('/extend/head', function(req, res) {
+  res.json({
+    msg: 'head'
+  })
+})
+
+router.put('/extend/put', function(req, res) {
+  res.json({
+    msg: 'put'
+  })
+})
+
+router.patch('/extend/patch', function(req, res) {
+  res.json({
+    msg: 'patch'
+  })
+})
+
 app.use(router)
 
 const port = process.env.PORT || 8888
