@@ -111,6 +111,25 @@ router.patch('/extend/patch', function(req, res) {
   })
 })
 
+router.get('/extend/user', function(req, res) {
+  res.json({
+    code: 0,
+    message: 'ok',
+    result: {
+      name: 'jack',
+      age: 18
+    }
+  })
+})
+
+router.get('/interceptor/get', function(req, res) {
+  res.json({
+    code: 1,
+    message: 'ok',
+    data: ''
+  })
+})
+
 app.use(router)
 
 const port = process.env.PORT || 8888
