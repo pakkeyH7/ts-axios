@@ -50,12 +50,12 @@ export default class Axios {
       }
     ]
 
-    this.interceptors.request.forEach(interceptor => {
-      chain.unshift(interceptor)
+    this.interceptors.request.forEach(res => {
+      chain.unshift(res)
     })
 
-    this.interceptors.response.forEach(interceptor => {
-      chain.push(interceptor)
+    this.interceptors.response.forEach(res => {
+      chain.push(res)
     })
 
     let promise = Promise.resolve(config)
