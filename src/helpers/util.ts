@@ -25,3 +25,44 @@ export function extend<T, U>(to: T, from: U): T & U {
   }
   return to as T & U
 }
+
+// let obj = {
+//   second: '123',
+//   first: {
+//     third: {
+//       fifth: {
+//         sixth: '789'
+//       }
+//     },
+//     forth: '456'
+//   },
+//
+// }
+
+export function deepMerge(...objs: any[]): any {
+  const result = Object.create(null)
+
+  objs.forEach(obj => {
+    if (obj) {
+      // 对象所有属性名组成的字符串数组
+      Object.keys(obj).forEach(key => {
+        // key = first | second
+        const val = obj[key]
+        if (isPlainObject(val)) {
+          // first
+          if (isPlainObject(result[key])) {
+            // result.first
+            // 多层对象用递归
+            result[key] = deepMerge(result[key], val)
+          } else {
+            result[key] = deepMerge(val)
+          }
+        } else {
+          result[key] = val
+        }
+      })
+    }
+  })
+
+  return result
+}
