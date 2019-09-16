@@ -39,13 +39,32 @@ export function extend<T, U>(to: T, from: U): T & U {
 //
 // }
 
+// let obj2 = {
+//   foo: {
+//     baz: 456,
+//     bar: {
+//       qux: 789
+//     }
+//   }
+// }
+//
+// let obj1 = {
+//   foo: {
+//     bar: 123
+//   }
+// }
+
+// 自设定值覆盖默认值
+
 export function deepMerge(...objs: any[]): any {
   const result = Object.create(null)
 
   objs.forEach(obj => {
+    // foo
     if (obj) {
       // 对象所有属性名组成的字符串数组
       Object.keys(obj).forEach(key => {
+        // bar
         // key = first | second
         const val = obj[key]
         if (isPlainObject(val)) {
