@@ -5,6 +5,7 @@ export default function transform(
   headers: any,
   fns?: AxiosTransformer | AxiosTransformer[]
 ): any {
+  console.log('8---处理data(请求/响应)')
   if (!fns) {
     return data
   }

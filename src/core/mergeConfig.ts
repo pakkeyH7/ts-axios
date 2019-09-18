@@ -72,20 +72,19 @@ const stratKeysFromVal2 = ['url', 'params', 'data']
 
 stratKeysFromVal2.forEach(key => {
   strats[key] = fromVal2Strat
-  console.log(key)
 })
 
 const stratKeysDeepMerge = ['headers']
 
 stratKeysDeepMerge.forEach(key => {
   strats[key] = deepMergeStrat
-  console.log(key)
 })
 
 export default function mergeConfig(
   config1: AxiosRequestConfig,
   config2?: AxiosRequestConfig
 ): AxiosRequestConfig {
+  console.log('5---合并默认Config和自定义Config')
   if (!config2) {
     config2 = {}
   }
@@ -104,6 +103,7 @@ export default function mergeConfig(
   }
 
   function mergeField(key: string): void {
+    // 如果是url params data 就是 strats[key]
     const strat = strats[key] || defaultStrat
     config[key] = strat(config1[key], config2![key])
   }

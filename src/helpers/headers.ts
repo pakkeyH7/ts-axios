@@ -58,11 +58,12 @@ export function parseHeaders(headers: string): any {
 }
 
 export function flattenHeaders(headers: any, method: Method): any {
+  console.log('10---合并请求头')
   if (!headers) {
     return headers
   }
 
-  headers = deepMerge(headers.common, headers[method], headers)
+  headers = deepMerge(headers.common || {}, headers[method] || {}, headers)
 
   const methodsToDelete = ['delete', 'get', 'head', 'options', 'post', 'put', 'patch', 'common']
 

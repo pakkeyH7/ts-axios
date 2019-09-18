@@ -27,6 +27,8 @@ const defaults: AxiosRequestConfig = {
   ]
 }
 
+console.log('1---设置默认配置')
+
 const methodsNoData = ['delete', 'get', 'head', 'options']
 
 methodsNoData.forEach(method => {

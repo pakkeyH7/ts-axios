@@ -5,6 +5,7 @@ import { parseHeaders } from './helpers/headers'
 import { createError } from './helpers/error'
 
 function xhr(config: AxiosRequestConfig): AxiosPromise {
+  console.log('11---发送请求')
   return new Promise((resolve, reject) => {
     // 设置默认值
     const { data = null, url, method = 'get', headers, responseType, timeout } = config
@@ -29,9 +30,12 @@ function xhr(config: AxiosRequestConfig): AxiosPromise {
       if (request.status === 0) {
         return
       }
+      console.log('12---请求成功')
 
       const responseHeaders = parseHeaders(request.getAllResponseHeaders())
+      console.log('13---设置响应头')
       const responseData = responseType !== 'text' ? request.response : request.responseText
+      console.log('14---设置响应data')
       const response: AxiosResponse = {
         data: responseData,
         status: request.status,
@@ -40,6 +44,7 @@ function xhr(config: AxiosRequestConfig): AxiosPromise {
         config,
         request
       }
+      console.log('15---设置响应配置')
       handleResponse(response)
     }
 
@@ -66,6 +71,7 @@ function xhr(config: AxiosRequestConfig): AxiosPromise {
     // 状态码错误
     function handleResponse(response: AxiosResponse): void {
       if (response.status >= 200 && response.status < 300) {
+        console.log('16---响应成功')
         resolve(response)
       } else {
         reject(

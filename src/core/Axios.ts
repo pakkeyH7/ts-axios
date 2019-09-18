@@ -27,6 +27,7 @@ export default class Axios {
   defaults: AxiosRequestConfig
 
   constructor(initConfig: AxiosRequestConfig) {
+    console.log('3---执行Axios构造函数')
     this.defaults = initConfig
     this.interceptors = {
       request: new InterceptorManager<AxiosRequestConfig>(),
@@ -36,6 +37,7 @@ export default class Axios {
   // 因为不确定传多少个参数，所以不能指定类型 只能是any
   // 需要支持 axios(url, config?) 方法 （重载）
   request(url: any, config?: any): AxiosPromise {
+    console.log('4---执行请求模块')
     // 如果有传url
     if (typeof url === 'string') {
       if (!config) {
@@ -57,10 +59,12 @@ export default class Axios {
     ]
 
     this.interceptors.request.forEach(res => {
+      console.log('添加请求拦截器')
       chain.unshift(res)
     })
 
     this.interceptors.response.forEach(res => {
+      console.log('添加响应拦截器')
       chain.push(res)
     })
 
