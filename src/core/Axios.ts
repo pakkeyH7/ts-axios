@@ -7,7 +7,6 @@ import {
   RejectedFn
 } from '../types'
 import dispatchRequest from './dispatchRequest'
-
 import InterceptorManager from './interceptorManager'
 import mergeConfig from './mergeConfig'
 
@@ -34,8 +33,10 @@ export default class Axios {
       response: new InterceptorManager<AxiosResponse>()
     }
   }
+
   // 因为不确定传多少个参数，所以不能指定类型 只能是any
   // 需要支持 axios(url, config?) 方法 （重载）
+
   request(url: any, config?: any): AxiosPromise {
     console.log('4---执行请求模块')
     // 如果有传url
