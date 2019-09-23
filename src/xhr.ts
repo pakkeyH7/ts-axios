@@ -31,7 +31,6 @@ function xhr(config: AxiosRequestConfig): AxiosPromise {
         return
       }
       console.log('12---请求成功')
-
       const responseHeaders = parseHeaders(request.getAllResponseHeaders())
       console.log('13---设置响应头')
       const responseData = responseType !== 'text' ? request.response : request.responseText
