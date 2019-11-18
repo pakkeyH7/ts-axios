@@ -1,3 +1,5 @@
+import { type } from 'os'
+
 const toString = Object.prototype.toString
 
 export function isDate(val: any): val is Date {
@@ -14,6 +16,10 @@ export function isDate(val: any): val is Date {
 export function isPlainObject(val: any): val is Object {
   //  判断是否普通对象 (避免form对象冲突)
   return toString.call(val) === '[object Object]'
+}
+
+export function isFormData(val: any): val is FormData {
+  return typeof val !== 'undefined' && val instanceof FormData
 }
 
 // 混合对象实现方法
@@ -54,7 +60,7 @@ export function extend<T, U>(to: T, from: U): T & U {
 //   }
 // }
 
-// 自设定值覆盖默认值
+// 自设定值覆盖默认值--深度合并
 
 export function deepMerge(...objs: any[]): any {
   const result = Object.create(null)

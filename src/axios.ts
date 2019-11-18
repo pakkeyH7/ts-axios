@@ -25,6 +25,7 @@ axios.create = function creat(config) {
 
 axios.CancelToken = CancelToken
 axios.Cancel = Cancel
+// 用于判断 错误 是否是取消请求的错误
 axios.isCancel = isCancel
 
 export default axios
