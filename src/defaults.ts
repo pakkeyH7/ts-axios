@@ -28,7 +28,11 @@ const defaults: AxiosRequestConfig = {
     function(data: any): any {
       return transformResponse(data)
     }
-  ]
+  ],
+
+  validateStatus(status: number): boolean {
+    return status >= 200 && status <= 300
+  }
 }
 
 console.log('1---设置默认配置')
